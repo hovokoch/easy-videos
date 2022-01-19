@@ -15,7 +15,7 @@
 
     <input type="hidden" name="post_type" value="video">
     <input type="hidden" name="page" value="import">
-    <input type="text" placeholder="Channel" name="channel" value="<?= $channel?>" required>
+    <input type="text" placeholder="Channel ID" name="channel" value="<?= $channel?>" required>
 
     <button><?= __('Find', 'easy-videos') ?></button>
 
