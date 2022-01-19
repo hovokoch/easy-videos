@@ -1,6 +1,6 @@
 # Easy Videos WP Plugin
 
-With the help of "Easy Video" plugin you can import videos from YouTube and see as an individual custom post type on website.
+With the help of the "Easy Video" plugin, you can import videos from YouTube and see them as an individual custom post type on your website.
 
 ## Usage
 
