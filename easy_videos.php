@@ -16,6 +16,7 @@ class EasyVideos
 
         add_action('init', [$this, 'easy_videos_post_type']);
         add_action('init', [$this, 'easy_videos_taxonomies']);
+        add_action('admin_menu', [$this, 'easy_videos_admin_panel']);
     }
 
     /**
@@ -74,6 +75,46 @@ class EasyVideos
             'query_var' => true,
             'rewrite' => array('slug' => 'category'),
         ));
+    }
+
+    /**
+     * Add submenu pages
+     */
+    function easy_videos_admin_panel()
+    {
+        add_submenu_page(
+            'edit.php?post_type=video',
+            __('Import', 'easy-videos'),
+            __('Import', 'easy-videos'),
+            'manage_options',
+            'import',
+            [$this, 'easy_videos_import_callback']
+        );
+
+        add_submenu_page(
+            'edit.php?post_type=video',
+            __('Settings', 'easy-videos'),
+            __('Settings', 'easy-videos'),
+            'manage_options',
+            'settings',
+            [$this, 'easy_videos_settings_callback']
+        );
+    }
+
+    /**
+     * Import page
+     */
+    function easy_videos_import_callback()
+    {
+
+    }
+
+    /**
+     * Settings page
+     */
+    function easy_videos_settings_callback()
+    {
+
     }
 
 }
