@@ -119,9 +119,64 @@ class EasyVideos
      */
     function easy_videos_import_callback()
     {
+        // Create posts
+        if ($_POST['videos']) {
+            foreach ($_POST['videos'] as $id => $video) {
+                if(isset($video['title'])){
+                    $post_data = array(
+                        'post_type' => 'video',
+                        'post_title' => sanitize_text_field($video['title']),
+                        'post_content' => '<iframe width="720" height="360" src="https://www.youtube.com/embed/' . $id . '"></iframe>',
+                        'post_status' => 'publish',
+                        'post_author' => 1,
+                    );
 
+                    $post_id = wp_insert_post($post_data);
+                    $taxonomy = 'video_categories';
+                    if(isset($video['categories'])){
+                        $categories = array_map(
+                            function($value) { return (int)$value; },
+                            $video['categories']
+                        );
+                        wp_set_object_terms($post_id, $categories, $taxonomy);
+                    }
+                }
+            }
+        }
+
+        // Channel id
+        $channel = $_GET['channel'];
+
+        // Find videos view
+        require_once 'includes/templates/partials/import.php';
+
+        if (isset($channel)) {
+            $parameters = [
+                'order' => 'date',
+                'part' => 'snippet',
+                'channelId' => $channel,
+                'maxResults' => $this->per_page,
+                'key' => $this->api_key,
+            ];
+
+            $page_token = $_GET['pageToken'];
+            if (isset($page_token)) {
+                $parameters['pageToken'] = $page_token;
+            }
+
+            $url = add_query_arg($parameters, 'https://www.googleapis.com/youtube/v3/search');
+
+            $api_request = wp_remote_get($url);
+            $response = wp_remote_retrieve_body($api_request);
+            $data = json_decode($response);
+
+            if (!empty($data->items)) {
+                require_once 'includes/templates/partials/videos.php';
+            } else {
+                echo '<p class="error">' . __('Invalid API key or channel ID.', 'easy-videos') . '</p>';
+            }
+        }
     }
-
     /**
      * Settings page
      */
@@ -140,6 +195,37 @@ class EasyVideos
         }
 
         require_once 'includes/templates/settings-page.php';
+    }
+
+    /**
+     * Pagination for videos
+     * @param $data
+     * @return string
+     */
+    function easy_videos_pagination($data)
+    {
+        $pagination = '';
+
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+        if ($data->prevPageToken) {
+            $previous_page = add_query_arg([
+                'pageToken' => $data->prevPageToken,
+            ], $url);
+
+            $pagination .= '<a href="' . $previous_page . '">'.__('Previous', 'easy-videos').'</a>';
+        }
+
+        if ($data->nextPageToken) {
+            $next_page = add_query_arg([
+                'pageToken' => $data->nextPageToken,
+            ], $url);
+
+            $pagination .= '<a href="' . $next_page . '">'.__('Next', 'easy-videos').'</a>';
+        }
+
+        return $pagination;
+
     }
 
 }
