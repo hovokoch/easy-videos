@@ -17,6 +17,7 @@ class EasyVideos
         add_action('init', [$this, 'easy_videos_post_type']);
         add_action('init', [$this, 'easy_videos_taxonomies']);
         add_action('admin_menu', [$this, 'easy_videos_admin_panel']);
+        add_action('admin_enqueue_scripts', [$this, 'easy_videos_styles_and_scripts']);
     }
 
     /**
@@ -99,6 +100,18 @@ class EasyVideos
             'settings',
             [$this, 'easy_videos_settings_callback']
         );
+    }
+
+    /**
+     * Styles and scripts
+     */
+    public function easy_videos_styles_and_scripts()
+    {
+        wp_register_style('easy_videos_settings', EASY_VIDEOS_URL . '/admin/css/easy-videos.css', array(), EASY_VIDEOS_VERSION);
+        wp_enqueue_style('easy_videos_settings');
+
+        wp_register_script('easy_videos_main', EASY_VIDEOS_URL . '/admin/js/easy-videos.js', array(), EASY_VIDEOS_VERSION);
+        wp_enqueue_script('easy_videos_main');
     }
 
     /**
