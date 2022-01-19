@@ -127,7 +127,19 @@ class EasyVideos
      */
     function easy_videos_settings_callback()
     {
+        if ($_POST) {
+            if (empty($_POST) || !wp_verify_nonce($_POST['easy_videos_nonce_field'], 'easy-videos-settings-save')) {
+                print 'Sorry, verification data is not provided.';
+                exit;
+            } else {
+                $api_key = $_POST['easy_videos_api_key'];
+                if ($api_key) {
+                    update_option('easy_videos_api_key', $api_key);
+                }
+            }
+        }
 
+        require_once 'includes/templates/settings-page.php';
     }
 
 }

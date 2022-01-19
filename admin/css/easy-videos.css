@@ -1,0 +1,192 @@
+#easy-videos-settings .container {
+    position: relative;
+    max-width: 40rem;
+    margin: 5rem auto;
+    background: #fff;
+    width: 100%;
+    padding: 3rem 5rem 0;
+    border-radius: 1px
+}
+
+#easy-videos-settings .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0.98);
+    -ms-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-transition: -webkit-transform .28s ease-in-out;
+    transition: -webkit-transform .28s ease-in-out;
+    -o-transition: transform .28s ease-in-out;
+    transition: transform .28s ease-in-out;
+    transition: transform .28s ease-in-out, -webkit-transform .28s ease-in-out;
+    z-index: -1
+}
+
+#easy-videos-settings .container:hover::before {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1)
+}
+
+#easy-videos-settings .container h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 0 2em
+}
+
+#easy-videos-settings .button-container {
+    text-align: center
+}
+
+#easy-videos-settings .button {
+    position: relative;
+    background: currentColor;
+    border: 1px solid currentColor;
+    font-size: 1.1rem;
+    color: #4f93ce;
+    margin: 3rem 0;
+    padding: .3rem 3rem;
+    cursor: pointer;
+    -webkit-transition: background-color .28s ease, color .28s ease, box-shadow .28s ease;
+    -webkit-transition: background-color .28s ease, color .28s ease, -webkit-box-shadow .28s ease;
+    transition: background-color .28s ease, color .28s ease, -webkit-box-shadow .28s ease;
+    -o-transition: background-color .28s ease, color .28s ease, box-shadow .28s ease;
+    transition: background-color .28s ease, color .28s ease, box-shadow .28s ease;
+    transition: background-color .28s ease, color .28s ease, box-shadow .28s ease, -webkit-box-shadow .28s ease;
+    overflow: hidden;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
+}
+
+#easy-videos-settings .button span {
+    color: #fff;
+    position: relative;
+    z-index: 1
+}
+
+#easy-videos-settings .button::before {
+    content: '';
+    position: absolute;
+    background: #071017;
+    border: 50vh solid #1d4567;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    display: block;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+    -ms-transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0)
+}
+
+#easy-videos-settings .button:hover {
+    background: #4f93ce;
+    color: #337ab7;
+    -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2)
+}
+
+#easy-videos-settings .button:active::before, #easy-videos-settings .button:focus::before {
+    -webkit-transition: opacity .28s ease 0.364s, -webkit-transform 1.12s ease;
+    transition: opacity .28s ease 0.364s, -webkit-transform 1.12s ease;
+    -o-transition: transform 1.12s ease, opacity .28s ease .364s;
+    -webkit-transition: opacity .28s ease .364s, -webkit-transform 1.12s ease;
+    transition: opacity .28s ease .364s, -webkit-transform 1.12s ease;
+    transition: transform 1.12s ease, opacity .28s ease .364s;
+    transition: transform 1.12s ease, opacity .28s ease .364s, -webkit-transform 1.12s ease;
+    transition: transform 1.12s ease, opacity .28s ease 0.364s, -webkit-transform 1.12s ease;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    -ms-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0
+}
+
+#easy-videos-settings .button:focus {
+    outline: none
+}
+
+#easy-videos-settings .form-group {
+    position: relative;
+    margin-top: 2.25rem;
+    margin-bottom: 2.25rem
+}
+
+#easy-videos-settings .form-group input {
+    display: block;
+    background: none;
+    padding: .125rem .125rem .0625rem;
+    font-size: 1rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 1.9;
+    width: 100%;
+    color: transparent;
+    -webkit-transition: all .28s ease;
+    -o-transition: all .28s ease;
+    transition: all .28s ease;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+#easy-videos-settings .form-group input:focus, #easy-videos-settings .form-group input.active {
+    color: #333
+}
+
+#easy-videos-settings .form-group .control-label {
+    position: absolute;
+    top: .25rem;
+    pointer-events: none;
+    padding-left: .125rem;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-transition: all .28s ease;
+    -o-transition: all .28s ease;
+    transition: all .28s ease
+}
+
+#easy-videos-settings .form-group input:focus ~ .control-label, #easy-videos-settings .form-group input.active ~ .control-label {
+    font-size: .8rem;
+    color: gray;
+    top: -1rem;
+    left: 0
+}
+
+#easy-videos-settings .form-group input:focus, #easy-videos-settings .form-group input.active {
+    outline: none
+}
+
+#easy-videos-settings .form-group .bar {
+    position: relative;
+    border-bottom: .0625rem solid #999;
+    display: block
+}
+
+#easy-videos-settings .form-group .bar::before {
+    content: '';
+    height: .125rem;
+    width: 0;
+    left: 50%;
+    bottom: -.0625rem;
+    position: absolute;
+    background: #337ab7;
+    -webkit-transition: left .28s ease, width .28s ease;
+    -o-transition: left .28s ease, width .28s ease;
+    transition: left .28s ease, width .28s ease;
+    z-index: 2
+}
+
+#easy-videos-settings .form-group input:focus ~ .bar::before, #easy-videos-settings .form-group input.active ~ .bar::before {
+    width: 100%;
+    left: 0
+}
